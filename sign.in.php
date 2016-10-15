@@ -140,10 +140,10 @@ h1 {
    
   <input class="Password_Recovery_Ok"  type="Submit"  name="Submit1" value="אישור"/></br></br>
 
- <input class="Password_Recovery_Ok"  type="button" onclick="location.href='file:///C:/Users/daniel/Desktop/פרוייקט%20גמר/Password_Recovery.html';" value="שכחתי ססמה" /></br></br></br></br></br></br></br>
+ <input class="Password_Recovery_Ok"  type="button" onclick="location.href='Password_Recovery.html';" value="שכחתי ססמה" /></br></br></br></br></br></br></br>
 
 <div class="back">
-  	<input class="button-exit"  type="button" onclick="location.href='file:///C:/Users/daniel/Desktop/פרוייקט%20גמר/menu.html';" value="חזרה לתפריט" />
+  	<input class="button-exit"  type="button" onclick="location.href='menu.html';" value="חזרה לתפריט" />
 </div>
 
 </div>
