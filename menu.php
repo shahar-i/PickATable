@@ -4,14 +4,20 @@
 	 <link rel="stylesheet" type="text/css" href="DF.css">
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="menu.css">
-  
-  
+
 
 
 </head>
 
-
+    
 <body>
+ <p id="demo"></p>
+<?php
+
+    include "Desserts.php";
+
+    print_r($arr);
+?>
 
 	<div class="main" >
   <h1>תפריט</h1> 
@@ -22,8 +28,7 @@
 <button class="button-xlarge pure-button"onclick="location.href='Desserts.html'">קינוחים</button></br></br>
 <button class="button-xlarge pure-button" onclick="location.href='drinks.html'"> שתיה קלה/חמה</button></br></br>
 <button class="button-xlarge pure-button" onclick="location.href='alcohol.html'">אלכוהול </button></br>
- 
-  <p>All rights reserved</p>
+<div class="footer"> All rights reserved</div>
 
 </div>
 

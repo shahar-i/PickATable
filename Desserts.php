@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+    <head>	
+
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="menu.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <p id="demo"></p>
+
+</head>
+
+
+
+<body>
+
+    
+<!--    <p id="demo"></p>
+
+    <div id="main" >
+        <table border=2 class="center">
+-->            <h1>קינוחים</h1> <!--
+            <tr>
+                <th>מחיר</th>
+                <th>שם מנה</th>
+                <th>תמונה</th>
+            </tr>
+
+
+            <td>50</td><td> שם מנה</td><td>תמונה</td><td><input type="button" name="קוסקוס"  onclick="handleClick(name);" /><tr>
+                <td>50</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="מסבחה" onclick="handleClick(name);" /><tr>
+                <td>50</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="פלאפל" onclick="handleClick(name);" /><tr>
+                <td>60</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="פסטה" onclick="handleClick(name);" /><tr>
+                <td>50</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="שווארמה" onclick="handleClick(name);" /><tr>
+                <td>50</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="חמוסטה" onclick="handleClick(name);" /><tr>
+                <td>50</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="מרק" onclick="handleClick(name);" /><tr>
+                <td>50</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="חזה עוף" onclick="handleClick(name);" /><tr>
+            </tr></tr></tr></tr></tr></tr></tr>
+
+        </table>
+
+-->
+
+        <button id="btn2" onclick="handleClick(this);" >הוסף להזמנה</button>
+
+
+
+        <div class="back">
+            
+            <input class="button-exit"  type="button" onclick="location.href = 'menu.php';" value="חזרה לתפריט" />
+        </div>
+    </div>
+
+
+</body>
+
+
+</html> 
+
+<?php
+
+$username=$_POST['username'];
+$password=$_POST['password'];
+
+$con=mysql_connect('localhost','root','');
+mysql_select_db('user',$con);
+
+$result=mysql_query("SELECT * FROM users WHERE username='$username'AND password='$password'");
+
+
+if(mysql_num_rows($result))
+{
+
+  $res=mysql_fetch_array($result);
+
+   $manager=$_POST['username'];
+ $manager2=$res['username'];
+
+ if($manager=='manager' && $manager2=='manager'){
+  $_SESSION['username']=$res['username'];
+  
+  echo("login manager");
+  echo("you are now Login.click <a href='manager.php'>here</a> to go back to main chat window ");
+ 
+   }
+}
+else
+{
+  echo("no user manager found.");
+
+
+}
+
+if(mysql_num_rows($result))
+{
+
+  $res=mysql_fetch_array($result);
+
+  $_SESSION['username']=$res['username'];
+  
+  echo("you are now Login. ");
+   
+}
+else
+{
+  echo("no user found.");
+
+
+}
+
+
+
+<?php
+
+$username=$_POST['username'];
+$password=$_POST['password'];
+
+$con=mysql_connect('localhost','root','');
+mysql_select_db('user',$con);
+
+$result=mysql_query("SELECT * FROM users WHERE username='$username'AND password='$password'");
+
+
+if(mysql_num_rows($result))
+{
+
+  $res=mysql_fetch_array($result);
+
+   $manager=$_POST['username'];
+ $manager2=$res['username'];
+
+ if($manager=='manager' && $manager2=='manager'){
+  $_SESSION['username']=$res['username'];
+  
+  echo("login manager");
+  echo("you are now Login.click <a href='manager.php'>here</a> to go back to main chat window ");
+ 
+   }
+}
+else
+{
+  echo("no user manager found.");
+
+
+}
+
+if(mysql_num_rows($result))
+{
+
+  $res=mysql_fetch_array($result);
+
+  $_SESSION['username']=$res['username'];
+  
+  echo("you are now Login. ");
+   
+}
+else
+{
+  echo("no user found.");
+
+
+}
+
+
+
+<?php
+
+$username=$_POST['username'];
+$password=$_POST['password'];
+
+$con=mysql_connect('localhost','root','');
+mysql_select_db('user',$con);
+
+$result=mysql_query("SELECT * FROM users WHERE username='$username'AND password='$password'");
+
+
+if(mysql_num_rows($result))
+{
+
+  $res=mysql_fetch_array($result);
+
+   $manager=$_POST['username'];
+ $manager2=$res['username'];
+
+ if($manager=='manager' && $manager2=='manager'){
+  $_SESSION['username']=$res['username'];
+  
+  echo("login manager");
+  echo("you are now Login.click <a href='manager.php'>here</a> to go back to main chat window ");
+ 
+   }
+}
+else
+{
+  echo("no user manager found.");
+
+
+}
+
+if(mysql_num_rows($result))
+{
+
+  $res=mysql_fetch_array($result);
+
+  $_SESSION['username']=$res['username'];
+  
+  echo("you are now Login. ");
+   
+}
+else
+{
+  echo("no user found.");
+
+
+}
+
+
+
+
+<?php
+
+$username=$_POST['username'];
+$password=$_POST['password'];
+
+$con=mysql_connect('localhost','root','');
+mysql_select_db('user',$con);
+
+$result=mysql_query("SELECT * FROM users WHERE username='$username'AND password='$password'");
+
+
+if(mysql_num_rows($result))
+{
+
+  $res=mysql_fetch_array($result);
+
+   $manager=$_POST['username'];
+ $manager2=$res['username'];
+
+ if($manager=='manager' && $manager2=='manager'){
+  $_SESSION['username']=$res['username'];
+  
+  echo("login manager");
+  echo("you are now Login.click <a href='manager.php'>here</a> to go back to main chat window ");
+ 
+   }
+}
+else
+{
+  echo("no user manager found.");
+
+
+}
+
+if(mysql_num_rows($result))
+{
+
+  $res=mysql_fetch_array($result);
+
+  $_SESSION['username']=$res['username'];
+  
+  echo("you are now Login. ");
+   
+}
+else
+{
+  echo("no user found.");
+
+
+}
+
+<?php
+
+$username=$_POST['username'];
+$password=$_POST['password'];
+
+$con=mysql_connect('localhost','root','');
+mysql_select_db('user',$con);
+
+$result=mysql_query("SELECT * FROM users WHERE username='$username'AND password='$password'");
+
+
+if(mysql_num_rows($result))
+{
+
+  $res=mysql_fetch_array($result);
+
+   $manager=$_POST['username'];
+ $manager2=$res['username'];
+
+ if($manager=='manager' && $manager2=='manager'){
+  $_SESSION['username']=$res['username'];
+  
+  echo("login manager");
+  echo("you are now Login.click <a href='manager.php'>here</a> to go back to main chat window ");
+ 
+   }
+}
+else
+{
+  echo("no user manager found.");
+
+
+}
+
+if(mysql_num_rows($result))
+{
+
+  $res=mysql_fetch_array($result);
+
+  $_SESSION['username']=$res['username'];
+  
+  echo("you are now Login. ");
+   
+}
+else
+{
+  echo("no user found.");
+
+
+}
+
+
+
+
