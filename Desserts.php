@@ -76,18 +76,18 @@ while ($res = mysql_fetch_array($result)) {
 
 ?>
 <html>
-    <input class="button-exit"  type="button" value= "<?php echo $res["name"]; echo $res["price"]; ?> "/>
+    <center>  <input class="button-exit"    name="<?php echo $res["name"]; ?> " type="button"  value= "<?php echo $res["name"]; echo $res["price"]; ?> "/> </br></center>
 </html>
     
     
   <?php 
-    
-//echo $res["price"]; 
-// echo $res["name"];     
+       
 }
   
-
- 
+if(isset($_POST[$res["name"]]))
+{
+    echo 'name';
+}
 }
 
 ?>
