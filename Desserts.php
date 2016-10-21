@@ -49,7 +49,7 @@
             <input class="button-exit"  type="button" onclick="location.href = 'menu.php';" value="חזרה לתפריט" />
         </div>
     </div>
-
+    <form name="form1" method="POST" action="Desserts..php">
 
 </body>
 
@@ -58,41 +58,37 @@
 
 <?php
 
-$username=$_POST['name'];
-$password=$_POST['password'];
+
 
 $con=mysql_connect('localhost','root','');
 mysql_select_db('user',$con);
 
-$result=mysql_query("SELECT * FROM desserts WHERE name='$name'AND password='$price'");
+$result=mysql_query("SELECT * FROM desserts");
 
 
 if(mysql_num_rows($result))
 {
-
-  $res=mysql_fetch_array($result);
-
-   $name=$_POST['name'];
- $price=$res['price'];
-
- if($manager=='manager' && $manager2=='manager'){
-  $_SESSION['username']=$res['username'];
-  
-  echo("login manager");
-  echo("you are now Login.click <a href='manager.php'>here</a> to go back to main chat window ");
  
-   }
+  
+
+  
+while ($res = mysql_fetch_array($result)) {
+
+?>
+<html>
+    <input class="button-exit"  type="button" value= "<?php echo $res["name"]; echo $res["price"]; ?> "/>
+</html>
+    
+    
+  <?php 
+    
+//echo $res["price"]; 
+// echo $res["name"];     
 }
-else
-{
-  echo("no user manager found.");
+  
 
-
+ 
 }
-
-
-
-
 
 ?>
 
