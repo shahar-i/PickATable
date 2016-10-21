@@ -58,13 +58,13 @@
 
 <?php
 
-$username=$_POST['username'];
+$username=$_POST['name'];
 $password=$_POST['password'];
 
 $con=mysql_connect('localhost','root','');
 mysql_select_db('user',$con);
 
-$result=mysql_query("SELECT * FROM users WHERE username='$username'AND password='$password'");
+$result=mysql_query("SELECT * FROM desserts WHERE name='$name'AND password='$price'");
 
 
 if(mysql_num_rows($result))
@@ -72,8 +72,8 @@ if(mysql_num_rows($result))
 
   $res=mysql_fetch_array($result);
 
-   $manager=$_POST['username'];
- $manager2=$res['username'];
+   $name=$_POST['name'];
+ $price=$res['price'];
 
  if($manager=='manager' && $manager2=='manager'){
   $_SESSION['username']=$res['username'];
@@ -90,234 +90,9 @@ else
 
 }
 
-if(mysql_num_rows($result))
-{
 
-  $res=mysql_fetch_array($result);
 
-  $_SESSION['username']=$res['username'];
-  
-  echo("you are now Login. ");
-   
-}
-else
-{
-  echo("no user found.");
 
 
-}
-
-
-
-<?php
-
-$username=$_POST['username'];
-$password=$_POST['password'];
-
-$con=mysql_connect('localhost','root','');
-mysql_select_db('user',$con);
-
-$result=mysql_query("SELECT * FROM users WHERE username='$username'AND password='$password'");
-
-
-if(mysql_num_rows($result))
-{
-
-  $res=mysql_fetch_array($result);
-
-   $manager=$_POST['username'];
- $manager2=$res['username'];
-
- if($manager=='manager' && $manager2=='manager'){
-  $_SESSION['username']=$res['username'];
-  
-  echo("login manager");
-  echo("you are now Login.click <a href='manager.php'>here</a> to go back to main chat window ");
- 
-   }
-}
-else
-{
-  echo("no user manager found.");
-
-
-}
-
-if(mysql_num_rows($result))
-{
-
-  $res=mysql_fetch_array($result);
-
-  $_SESSION['username']=$res['username'];
-  
-  echo("you are now Login. ");
-   
-}
-else
-{
-  echo("no user found.");
-
-
-}
-
-
-
-<?php
-
-$username=$_POST['username'];
-$password=$_POST['password'];
-
-$con=mysql_connect('localhost','root','');
-mysql_select_db('user',$con);
-
-$result=mysql_query("SELECT * FROM users WHERE username='$username'AND password='$password'");
-
-
-if(mysql_num_rows($result))
-{
-
-  $res=mysql_fetch_array($result);
-
-   $manager=$_POST['username'];
- $manager2=$res['username'];
-
- if($manager=='manager' && $manager2=='manager'){
-  $_SESSION['username']=$res['username'];
-  
-  echo("login manager");
-  echo("you are now Login.click <a href='manager.php'>here</a> to go back to main chat window ");
- 
-   }
-}
-else
-{
-  echo("no user manager found.");
-
-
-}
-
-if(mysql_num_rows($result))
-{
-
-  $res=mysql_fetch_array($result);
-
-  $_SESSION['username']=$res['username'];
-  
-  echo("you are now Login. ");
-   
-}
-else
-{
-  echo("no user found.");
-
-
-}
-
-
-
-
-<?php
-
-$username=$_POST['username'];
-$password=$_POST['password'];
-
-$con=mysql_connect('localhost','root','');
-mysql_select_db('user',$con);
-
-$result=mysql_query("SELECT * FROM users WHERE username='$username'AND password='$password'");
-
-
-if(mysql_num_rows($result))
-{
-
-  $res=mysql_fetch_array($result);
-
-   $manager=$_POST['username'];
- $manager2=$res['username'];
-
- if($manager=='manager' && $manager2=='manager'){
-  $_SESSION['username']=$res['username'];
-  
-  echo("login manager");
-  echo("you are now Login.click <a href='manager.php'>here</a> to go back to main chat window ");
- 
-   }
-}
-else
-{
-  echo("no user manager found.");
-
-
-}
-
-if(mysql_num_rows($result))
-{
-
-  $res=mysql_fetch_array($result);
-
-  $_SESSION['username']=$res['username'];
-  
-  echo("you are now Login. ");
-   
-}
-else
-{
-  echo("no user found.");
-
-
-}
-
-<?php
-
-$username=$_POST['username'];
-$password=$_POST['password'];
-
-$con=mysql_connect('localhost','root','');
-mysql_select_db('user',$con);
-
-$result=mysql_query("SELECT * FROM users WHERE username='$username'AND password='$password'");
-
-
-if(mysql_num_rows($result))
-{
-
-  $res=mysql_fetch_array($result);
-
-   $manager=$_POST['username'];
- $manager2=$res['username'];
-
- if($manager=='manager' && $manager2=='manager'){
-  $_SESSION['username']=$res['username'];
-  
-  echo("login manager");
-  echo("you are now Login.click <a href='manager.php'>here</a> to go back to main chat window ");
- 
-   }
-}
-else
-{
-  echo("no user manager found.");
-
-
-}
-
-if(mysql_num_rows($result))
-{
-
-  $res=mysql_fetch_array($result);
-
-  $_SESSION['username']=$res['username'];
-  
-  echo("you are now Login. ");
-   
-}
-else
-{
-  echo("no user found.");
-
-
-}
-
-
-
+?>
 
