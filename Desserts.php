@@ -49,7 +49,7 @@
             <input class="button-exit"  type="button" onclick="location.href = 'menu.php';" value="חזרה לתפריט" />
         </div>
     </div>
-    <form name="form1" method="POST" action="Desserts..php">
+    <form name="form1" method="POST" action="Desserts.php">
 
 </body>
 
@@ -76,7 +76,7 @@ while ($res = mysql_fetch_array($result)) {
 
 ?>
 <html>
-    <center>  <input class="button-exit"    name="<?php echo $res["name"]; ?> " type="button"  value= "<?php echo $res["name"]; echo $res["price"]; ?> "/> </br></center>
+    <center>  <input class="button-exit"   name="<?php echo $res["name"]; ?> " type="button"  value= "<?php echo $res["name"]; echo $res["price"]; ?> "/> </br></center>
 </html>
     
     
