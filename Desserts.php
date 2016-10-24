@@ -68,27 +68,60 @@ $result=mysql_query("SELECT * FROM desserts");
 
 if(mysql_num_rows($result))
 {
- 
-  
-
-  
+  $my_arr = array();
 while ($res = mysql_fetch_array($result)) {
 
 ?>
 <html>
     <center>  <input class="button-exit"   name="<?php echo $res["name"]; ?> " type="button"  value= "<?php echo $res["name"]; echo $res["price"]; ?> "/> </br></center>
 </html>
-    
-    
-  <?php 
-       
-}
+<?php
+
+
+$my_arr[] = $res["name"];//מערך ששומר את שמות הקינוחים
+
   
-if(isset($_POST[$res["name"]]))
-{
-    echo 'name';
+}
+
+$con=mysql_connect('localhost','root','');
+mysql_select_db('user',$con);
+
+$result=mysql_query("SELECT * FROM desserts");
+$i=0;
+$my_arr2 = array();//מערך ששומר את הערכים שנבחרו
+while ($res = mysql_fetch_array($result)) {
+    
+    $named=$res["name"];
+    $price=$res["price"];
+    
+foreach ($my_arr as $key => $value) {
+    
+    if (isset($_POST[$named])==$value)//בדיקה אם מה שנבחר נמצא במערך הקינוחים
+        { 
+            $result2=mysql_query("INSERT INTO `user`.`invitation` (`name`, `price`) VALUES ('$named', '$price');");//מכניס לטבלת הזמנות מה שנבחר 
+            
+            break;
+        } 
+    
 }
 }
 
+}
+
+$con=mysql_connect('localhost','root','');
+mysql_select_db('user',$con);
+
+$result=mysql_query("SELECT * FROM invitation");
+
+if(mysql_num_rows($result)){
+
+while ($res2 = mysql_fetch_array($result)) {// הדפסת טבלת הזמנה
+    echo $res2["name"];
+    echo $res2["price"];
+    
+print '<br />';print '<br />';
+}
+}
 ?>
+
 
