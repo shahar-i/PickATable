@@ -12,12 +12,7 @@
     
 <body>
  <p id="demo"></p>
-<?php
 
-    include "Desserts.php";
-
-    print_r($arr);
-?>
 
 	<div class="main" >
   <h1>תפריט</h1> 

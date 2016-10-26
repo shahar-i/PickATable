@@ -86,7 +86,7 @@ $my_arr[] = $res["name"];//מערך ששומר את שמות הקינוחים
 $con=mysql_connect('localhost','root','');
 mysql_select_db('user',$con);
 
-$result=mysql_query("SELECT * FROM desserts");
+$result=mysql_query("SELECT * FROM tables");
 $i=0;
 $my_arr2 = array();//מערך ששומר את הערכים שנבחרו
 while ($res = mysql_fetch_array($result)) {
