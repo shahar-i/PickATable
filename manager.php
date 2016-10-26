@@ -47,11 +47,11 @@ body {
 
 
 
-  <button class="button-xlarge pure-button">רישום מלצר חדש</button></br></br>
+ <button class="button-xlarge pure-button" onclick="location.href= 'new_waiter.php'" >רישום מלצר חדש</button></br></br>
 <button class="button-xlarge pure-button">עדכון תפריטים</button></br></br>
 <button class="button-xlarge pure-button">דוחות</button></br></br></br></br></br></br>
 
-<button class="button-xlarge pure-button">יציאה</button></br></br>
+<button class="button-xlarge pure-button" onclick="location.href= 'menu.php'">יציאה</button></br></br>
 
 
 

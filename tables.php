@@ -67,3 +67,32 @@
 </html>
 
 
+<?php
+
+
+
+$con=mysql_connect('localhost','root','');
+mysql_select_db('user',$con);
+
+$result=mysql_query("SELECT * FROM tables");
+
+
+if(mysql_num_rows($result))
+{
+  $my_arr = array();
+while ($res = mysql_fetch_array($result)) {
+
+?>
+<html>
+    <center>  <input class="button-exit"  onclick="location.href='menu.php'" name="<?php echo $res["table_name"]; ?> " type="button"  value= "<?php echo $res["table_name"]; ?> "/> </br></center>
+
+</html>
+
+<?php
+ 
+
+
+
+  
+}
+}

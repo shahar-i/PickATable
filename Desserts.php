@@ -49,7 +49,7 @@ while ($res = mysql_fetch_array($result)) {
 
 ?>
 <html>
-    <center>  <input class="button-exit"    name="<?php echo $res["name"];?>" type="submit"  value= "<?php echo $res["name"]; echo $res["price"]; ?> "/> </br></center>
+    <center>  <input class="button-exit"   name="<?php echo $res["name"]; ?> " type="button"  value= "<?php echo $res["name"]; echo $res["price"]; ?> "/> </br></center>
 </html>
 <?php
 
