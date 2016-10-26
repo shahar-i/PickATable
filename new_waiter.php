@@ -16,7 +16,7 @@
 
 
     
-khk
+
     
     if (isset($_POST['Submit']))
         { 
