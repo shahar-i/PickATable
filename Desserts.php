@@ -14,33 +14,10 @@
 <body>
 
     
-<!--    <p id="demo"></p>
 
-    <div id="main" >
-        <table border=2 class="center">
--->            <h1>קינוחים</h1> <!--
-            <tr>
-                <th>מחיר</th>
-                <th>שם מנה</th>
-                <th>תמונה</th>
-            </tr>
-
-
-            <td>50</td><td> שם מנה</td><td>תמונה</td><td><input type="button" name="קוסקוס"  onclick="handleClick(name);" /><tr>
-                <td>50</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="מסבחה" onclick="handleClick(name);" /><tr>
-                <td>50</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="פלאפל" onclick="handleClick(name);" /><tr>
-                <td>60</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="פסטה" onclick="handleClick(name);" /><tr>
-                <td>50</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="שווארמה" onclick="handleClick(name);" /><tr>
-                <td>50</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="חמוסטה" onclick="handleClick(name);" /><tr>
-                <td>50</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="מרק" onclick="handleClick(name);" /><tr>
-                <td>50</td><td>שם מנה</td><td>תמונה</td><td><input type="button" name="חזה עוף" onclick="handleClick(name);" /><tr>
-            </tr></tr></tr></tr></tr></tr></tr>
-
-        </table>
-
--->
-
-        <button id="btn2" onclick="handleClick(this);" >הוסף להזמנה</button>
+           <h1>קינוחים</h1> 
+      
+        
 
 
 
@@ -57,7 +34,6 @@
 </html> 
 
 <?php
-
 
 
 $con=mysql_connect('localhost','root','');
@@ -79,16 +55,15 @@ while ($res = mysql_fetch_array($result)) {
 
 
 $my_arr[] = $res["name"];//מערך ששומר את שמות הקינוחים
-
-  
+ 
 }
 
 $con=mysql_connect('localhost','root','');
 mysql_select_db('user',$con);
 
 $result=mysql_query("SELECT * FROM desserts");
-$i=0;
-$my_arr2 = array();//מערך ששומר את הערכים שנבחרו
+
+//$my_arr2 = array();//מערך ששומר את הערכים שנבחרו
 while ($res = mysql_fetch_array($result)) {
     
     $named=$res["name"];
@@ -96,32 +71,100 @@ while ($res = mysql_fetch_array($result)) {
     
 foreach ($my_arr as $key => $value) {
     
-    if (isset($_POST[$named])==$value)//בדיקה אם מה שנבחר נמצא במערך הקינוחים
+    if (isset($_POST[$named])==$value)//בדיקה אם מה שנבחר נמצא בטבלה וגם במערך הקינוחים
         { 
+        
+        {
             $result2=mysql_query("INSERT INTO `user`.`invitation` (`name`, `price`) VALUES ('$named', '$price');");//מכניס לטבלת הזמנות מה שנבחר 
             
             break;
         } 
+        
     
 }
 }
 
 }
+
 
 $con=mysql_connect('localhost','root','');
 mysql_select_db('user',$con);
 
 $result=mysql_query("SELECT * FROM invitation");
-
 if(mysql_num_rows($result)){
+?>
+<html><h4> פרטי הזמנה למלצר</h4><html>
+ <?php
 
 while ($res2 = mysql_fetch_array($result)) {// הדפסת טבלת הזמנה
-    echo $res2["name"];
-    echo $res2["price"];
+    
+    ?>
+        <html><input  name="<?php echo $res2["name"];?>+5" type="submit"  value= "מחק פריט"/></html>
+       
+        <?php
+        echo "שם פריט:",$res2["name"];
+   print '<br />';
+    echo "מחיר פריט:",$res2["price"];
+     
     
 print '<br />';print '<br />';
 }
+?>
+        <html>  <textarea rows="4" cols="50" style="direction: rtl;" name="comments">
+</textarea> 
+         <input class=""  name="comments2" type="submit"  value= "שמור הערות"/>
+          <input type="reset" value="מחק">
+        </html>  
+            
+        <?php
 }
+
+}
+$result=mysql_query("SELECT * FROM invitation");
+if(mysql_num_rows($result)){
+
+
+while ($res = mysql_fetch_array($result)) {
+    $named2=$res["name"];
+
+    print '<br />';
+    $named=$res["name"];
+    $named="$named+5";
+  
+    $price=$res["price"];
+   
+foreach ($my_arr as $key => $value) {
+    $value="$value+5";
+    if (isset($_POST[$named])==$value)//בדיקה אם מה שנבחר נמצא בטבלה וגם במערך הקינוחים
+        { 
+         
+            $result2=mysql_query("DELETE FROM `invitation` WHERE name='$named2' and price=$price");//מכניס לטבלת הזמנות מה שנבחר 
+  
+        header("Refresh:0");
+            break;
+      
+   
+            }
+           
+                
+            
+        } 
+    
+}
+
+}
+if (isset($_POST["comments2"]))
+{
+    
+    $con=mysql_connect('localhost','root','');
+mysql_select_db('user',$con);
+$comments=$_POST['comments'];
+
+$result=mysql_query("INSERT INTO `user`.`comments` (`comment`) VALUES ('$comments');");
+
+}
+
+
 ?>
 
 
