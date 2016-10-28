@@ -23,7 +23,7 @@
 
         <div class="back">
             
-            <input class="button-exit"  type="button" onclick="location.href = 'menu.php';" value="חזרה לתפריט" />
+            <input class="button-exit"  type="submit" onclick="location.href = 'menu.php';" value="חזרה לתפריט" />
         </div>
     </div>
     <form name="form1" method="POST" action="Desserts.php">
@@ -49,15 +49,17 @@ while ($res = mysql_fetch_array($result)) {
 
 ?>
 <html>
-    <center>  <input class="button-exit"   name="<?php echo $res["name"]; ?> " type="button"  value= "<?php echo $res["name"]; echo $res["price"]; ?> "/> </br></center>
+    <center>  <input class="button-exit"   name="<?php echo $res["name"];?>" type="submit"  value= "<?php echo $res["name"]; echo $res["price"]; ?> "/> </br></center>
 </html>
 <?php
-
+ 
 
 $my_arr[] = $res["name"];//מערך ששומר את שמות הקינוחים
- 
+// print_r($my_arr);
 }
 
+
+    
 $con=mysql_connect('localhost','root','');
 mysql_select_db('user',$con);
 
@@ -70,21 +72,21 @@ while ($res = mysql_fetch_array($result)) {
     $price=$res["price"];
     
 foreach ($my_arr as $key => $value) {
-    
-    if (isset($_POST[$named])==$value)//בדיקה אם מה שנבחר נמצא בטבלה וגם במערך הקינוחים
+  
+    if(isset($_POST[$named])== $value)//בדיקה אם מה שנבחר נמצא בטבלה וגם במערך הקינוחים
         { 
         
-        {
+        
             $result2=mysql_query("INSERT INTO `user`.`invitation` (`name`, `price`) VALUES ('$named', '$price');");//מכניס לטבלת הזמנות מה שנבחר 
             
             break;
-        } 
-        
+             
     
 }
 }
 
 }
+
 
 
 $con=mysql_connect('localhost','root','');
@@ -109,6 +111,8 @@ while ($res2 = mysql_fetch_array($result)) {// הדפסת טבלת הזמנה
     
 print '<br />';print '<br />';
 }
+
+
 ?>
         <html>  <textarea rows="4" cols="50" style="direction: rtl;" name="comments">
 </textarea> 
@@ -118,53 +122,54 @@ print '<br />';print '<br />';
             
         <?php
 }
-
 }
 $result=mysql_query("SELECT * FROM invitation");
 if(mysql_num_rows($result)){
 
-
+$i=0;
 while ($res = mysql_fetch_array($result)) {
-    $named2=$res["name"];
+   $named2=$res["name"];
 
-    print '<br />';
+   print '<br />';
     $named=$res["name"];
     $named="$named+5";
   
     $price=$res["price"];
    
-foreach ($my_arr as $key => $value) {
+foreach ($my_arr as $key => $value ) {
+    if($i==0){
     $value="$value+5";
     if (isset($_POST[$named])==$value)//בדיקה אם מה שנבחר נמצא בטבלה וגם במערך הקינוחים
         { 
-         
-            $result2=mysql_query("DELETE FROM `invitation` WHERE name='$named2' and price=$price");//מכניס לטבלת הזמנות מה שנבחר 
-  
+        
+           $result2=mysql_query("DELETE FROM `invitation` WHERE name='$named2' and price=$price LIMIT 1");//מכניס לטבלת הזמנות מה שנבחר 
+ 
         header("Refresh:0");
+        $i=1;
             break;
-      
+     
    
-            }
-           
+           }
+                 }
+}
+ 
                 
             
-        } 
-    
+   
 }
 
 }
 if (isset($_POST["comments2"]))
 {
-    
-    $con=mysql_connect('localhost','root','');
+   
+   $con=mysql_connect('localhost','root','');
 mysql_select_db('user',$con);
 $comments=$_POST['comments'];
 
-$result=mysql_query("INSERT INTO `user`.`comments` (`comment`) VALUES ('$comments');");
+$result=mysql_query("UPDATE `comments` SET `comment`='$comments' WHERE 1;");
+
 
 }
 
 
 ?>
-
-
