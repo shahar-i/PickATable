@@ -96,7 +96,15 @@ $result=mysql_query("SELECT * FROM invitation");
 if(mysql_num_rows($result)){
 ?>
 <html><h4> פרטי הזמנה למלצר</h4><html>
- <?php
+        <?php
+        
+    $resultt=mysql_query("SELECT * FROM `comments`");//עובר על טבלת הערות ושומר את ההערה במשתנה
+while ($resi = mysql_fetch_array($resultt)) {
+
+$comant=$resi["comment"];  
+       
+}    
+
 
 while ($res2 = mysql_fetch_array($result)) {// הדפסת טבלת הזמנה
     
@@ -112,9 +120,12 @@ while ($res2 = mysql_fetch_array($result)) {// הדפסת טבלת הזמנה
 print '<br />';print '<br />';
 }
 
-
 ?>
-        <html>  <textarea rows="4" cols="50" style="direction: rtl;" name="comments">
+        <html>  <textarea class="text_hide" rows="4" cols="50" style="direction: rtl;" name="comments">
+<?php
+ echo   $comant;//מדפיס לתוך הטקסט מטבלת הערות לאחר השמירת השמתנה
+ 
+?>
 </textarea> 
          <input class=""  name="comments2" type="submit"  value= "שמור הערות"/>
           <input type="reset" value="מחק">
@@ -136,25 +147,23 @@ while ($res = mysql_fetch_array($result)) {
   
     $price=$res["price"];
    
-foreach ($my_arr as $key => $value ) {
+foreach ($my_arr as $key => $value) {
     if($i==0){
     $value="$value+5";
     if (isset($_POST[$named])==$value)//בדיקה אם מה שנבחר נמצא בטבלה וגם במערך הקינוחים
         { 
         
-           $result2=mysql_query("DELETE FROM `invitation` WHERE name='$named2' and price=$price LIMIT 1");//מכניס לטבלת הזמנות מה שנבחר 
- 
+           $result2=mysql_query("DELETE FROM `invitation` WHERE name='$named2' and price=$price LIMIT 1 ");//מכניס לטבלת הזמנות מה שנבחר 
+        
         header("Refresh:0");
         $i=1;
             break;
      
    
            }
-                 }
-}
- 
-                
-            
+    }
+                     
+       } 
    
 }
 
@@ -167,6 +176,22 @@ mysql_select_db('user',$con);
 $comments=$_POST['comments'];
 
 $result=mysql_query("UPDATE `comments` SET `comment`='$comments' WHERE 1;");
+?>
+        <script>
+            $('.text_hide').hide();
+            </script>
+            <html>  <textarea class="text_hide2" rows="4" cols="50" style="direction: rtl;" name="comments">
+<?php
+
+ echo   $_POST['comments'];
+    
+ 
+ 
+?>
+</textarea> 
+     </html>
+     
+    <?php
 
 
 }
