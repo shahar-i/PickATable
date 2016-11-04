@@ -2,19 +2,19 @@
     <head>  <link rel="stylesheet" type="text/css" href="menu.css"></head>
     <body >
         <h1>עדכון פרטי מלצר</h1>
-
+  
         <form  action="edit_user.php" method="POST">
-            <input id="name" type="text" placeholder="Username" name="username">
-             <input id="name" type="text" placeholder="New Username" name="new_username">
-             <input id="name" type="password" placeholder="Password" name="password">
+           username:
+           <input class="floatright" type="text" placeholder="Username" name="username" ><br>
+           new username:
+           <input  type="text" placeholder="New Username" name="new_username"><br>
+           new password:
+           <input id="name2" type="password" placeholder="Password" name="password"><br><br><br>
             <input  class=""  type="submit"  name="Submit" value="אישור" /></br></br>
-
+           
         </form> 
     </body>
 </html>
-
-
-
 
 
 
@@ -25,11 +25,8 @@ if (isset($_POST['Submit'])) {
     mysql_select_db('user', $con);
 
 
-
-
-
     $username1 = $_POST['username'];
-
+    $new_pass = $_POST['password'];
 
     $result5 = mysql_query("SELECT * FROM `users`");
 
@@ -41,17 +38,15 @@ if (isset($_POST['Submit'])) {
         $username1 = $_POST['username'];
         $username2 = $name_db['username'];
         $new_user = $_POST['new_username'];
-        $email = $_POST['email'];
-        $last_name = $_POST['last_name'];
-        $password = $_POST['password'];
+        $new_pass = $_POST['password'];
 
 
         if ($username1 == $username2) {
-            echo 'kayam';
+            echo 'user exist';
             $i = 0;
             if(isset($_POST[$username1])==$username2)
             $new_user=$username1;
-                    mysql_query("UPDATE users SET username='$new_user' WHERE username='$username2';");
+                    mysql_query("UPDATE users SET username='$new_user' , password='$new_pass' WHERE username='$username2' ;");
 
             break;
         }
