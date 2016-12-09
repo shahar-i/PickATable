@@ -155,6 +155,9 @@
 </html> 
 
 <?php
+
+
+
 $username = $_POST['username'];
 $password = $_POST['password'];
 
@@ -168,14 +171,17 @@ if (mysql_num_rows($result)) {
 
     $res = mysql_fetch_array($result);
 
-    $manager = $_POST['username'];
-    $manager2 = $res['username'];
+    $user = $_POST['username'];
+    $user_Db = $res['username'];
 
-    if ($manager == 'manager' && $manager2 == 'manager') {
+    if ($user == 'manager' && $user_Db == 'manager') {
         $_SESSION['username'] = $res['username'];
 
         header("location: manager.php");
-    } else {
+    }
+    
+    
+    if ($user ==  $user_Db){
 
         $res = mysql_fetch_array($result);
 
@@ -183,5 +189,11 @@ if (mysql_num_rows($result)) {
 
         header("location: tables.php");
     }
+  
+}
+
+  else {
+        
+        echo "פרטים לא נכונם";
 }
 ?>
