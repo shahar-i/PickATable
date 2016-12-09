@@ -175,7 +175,7 @@ if (mysql_num_rows($result)) {
         $_SESSION['username'] = $res['username'];
 
         header("location: manager.php");
-    } else {
+    }else {
 
         $res = mysql_fetch_array($result);
 
@@ -183,5 +183,10 @@ if (mysql_num_rows($result)) {
 
         header("location: tables.php");
     }
+    
+
+  }
+ else {
+ echo'הפרטים אינם נכונים';
 }
 ?>
