@@ -47,7 +47,7 @@ if (isset($_POST['Submit'])) {
     }
 
     if ($i == 1) {
-        echo 'creart a new user';
+        echo 'new user created';
         $_SESSION['username'] = $res['username'];
         mysql_query("INSERT INTO `user`.`users` (`username`, `last_name`,`password`, `mail`) VALUES ('$username1', '$last_name', '$password', '$email');");
     }

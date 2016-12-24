@@ -118,7 +118,7 @@
     <body>
 
 
-        <form name="form1" method="POST" action="sign.in.php">
+        <form name="form1" method="POST" action="sign.in.php"
 
             <div class="main" >
 
@@ -149,7 +149,7 @@
             </div>
 
 
-
+</form>
 
     </body>
 </html> 

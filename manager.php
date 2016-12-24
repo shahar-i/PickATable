@@ -48,6 +48,7 @@ body {
 
 
  <button class="button-xlarge pure-button" onclick="location.href= 'new_waiter.php'" >רישום מלצר חדש</button></br></br>
+ <button class="button-xlarge pure-button" onclick="location.href= 'edit_user.php'" >עדכון פרטי מלצר</button></br></br>
 <button class="button-xlarge pure-button">עדכון תפריטים</button></br></br>
 <button class="button-xlarge pure-button">דוחות</button></br></br></br></br></br></br>
 
