@@ -69,7 +69,10 @@
 
 <?php
 
-
+//session_start();
+//if(!isset($_SESSION['username'])){
+//   header("Location:sign.in.php");
+//}
 
 $con=mysql_connect('localhost','root','');
 mysql_select_db('user',$con);
