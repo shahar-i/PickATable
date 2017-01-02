@@ -52,8 +52,8 @@ body {
 <button class="button-xlarge pure-button">עדכון תפריטים</button></br></br>
 <button class="button-xlarge pure-button">דוחות</button></br></br></br></br></br></br>
 
-<button class="button-xlarge pure-button" onclick="location.href= 'menu.php'">יציאה</button></br></br>
-
+<!--<button class="" onclick="location.href= 'menu.php'" style="background-image:url('back.png');background-repeat: no-repeat;width: 220px;height: 110px;"></button></br></br>-->
+<a href="menu.php"><img src="back.png"></a> 
 
 
 

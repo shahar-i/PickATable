@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style type="text/css">
 
             body {
@@ -183,8 +183,9 @@ if (mysql_num_rows($result)) {
         $res = mysql_fetch_array($result);
 
         $_SESSION['username'] = $res['username'];
-
-        header("location: tables.php");
+header("location: tables.php");
+        
+        
     }
     
 

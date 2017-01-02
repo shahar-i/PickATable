@@ -23,7 +23,7 @@
 
         <div class="back">
             
-            <input class="button-exit"  type="submit" onclick="location.href = 'menu.php';" value="חזרה לתפריט" />
+           <a href="menu.php"><img src="back.png"></a> 
         </div>
     </div>
     <form name="form1" method="POST" action="Desserts.php">
@@ -49,7 +49,7 @@ while ($res = mysql_fetch_array($result)) {
 
 ?>
 <html>
-    <center>  <input class="button-exit"   name="<?php echo $res["name"];?>" type="submit"  value= "<?php echo $res["name"]; echo $res["price"]; ?> "/> </br></center>
+    <center>  <input class="button-exit"   name="<?php echo $res["name"];?>" type="submit"  value= "<?php echo $res["name"]; echo $res["price"]; ?> "/> </br>   </center>
 </html>
 <?php
  
