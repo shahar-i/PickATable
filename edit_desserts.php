@@ -20,7 +20,7 @@
 
         <div class="back">
             
-            <input class="button-exit"  type="submit" onclick="location.href = 'menu.php';" value="חזרה " />
+            <input class="button-exit"  type="button" onclick="location.href = 'edit_menu.php';" value="חזרה " />
         </div>
     
            <input  name="add_dessert" type="submit"  value= "הוסף קינוח"/> </br></br></br>
