@@ -1,25 +1,92 @@
 <html>
-    <head>  <link rel="stylesheet" type="text/css" href="menu.css"></head>
-    <body align="center">
+    <head>  <link rel="stylesheet" type="text/css" href="menu.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body align="LEFT">
         <h1>עדכון פרטי מלצר</h1>
+        
+        <div class="container">
+
+  <form  action="edit_user.php" method="POST">
+    <div class="form-group">
+      <label for="text">username:</label>
+      <input type="text" class="form-control" id="email" placeholder="Enter username" name="username">
+    </div>
+    
   
-        <form  action="edit_user.php" method="POST">
-           username:
-           <input class="floatright" type="text" placeholder="Username" name="username" ><br>
-           new username:
-           <input  type="text" placeholder="New Username" name="new_username"><br>
-           new last name:
-           <input  type="text" placeholder="new last name" name="new_lastname"><br>
-           new password:
-           <input id="name2" type="password" placeholder="Password" name="password"><br>
-            new email:
-            <input class="floatright" type="email" placeholder="new email" name="email" ><br>
-           <br><br>
-            <input  class=""  type="submit"  name="Submit" value="אישור" /></br></br>
-                   <div class="back">
-                    <input class="button-exit"  type="button" onclick="location.href = 'manager.php'" value="חזרה להגדרות מנהל" />
-                    
+        <div class="form-group">
+      <label for="pwd">new username:</label>
+      <input type="text" class="form-control" id="pwd" placeholder="Enter new username:" name="new_username">
+    </div>
+      
+        <div class="form-group">
+      <label for="pwd">new last name:</label>
+      <input type="text" class="form-control" id="pwd" placeholder="Enter new last name:" name="new_lastname">
+    </div>
+      
+       <div class="form-group">
+      <label for="pwd">new password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter new password:" name="password">
+    </div>
+      
+        <div class="form-group">
+      <label for="pwd"> new email:</label>
+      <input type="text" class="form-control" id="pwd" placeholder="Enter new email:" name="email">
+    </div>
+      
+    <button type="submit"  name="Submit" class="btn btn-default">שמור שינויים</button>
+  </form>
+</div>
+        
+                   <div class="back">            
         </form> 
+        <div class="container">
+ 
+                                           
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+    <?php
+    $count=1;
+    
+    ?>
+      <tr>
+        <th>#</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+            <?php
+        $con = mysql_connect('localhost', 'root', '');
+    mysql_select_db('user', $con);
+    $result5 = mysql_query("SELECT * FROM `users`");
+
+
+        while ($name_db = mysql_fetch_array($result5)) {
+
+   
+
+    ?>
+      <tr>
+        <td><?php echo $count++; ?></td>
+        <td><?php echo $name_db['username']; ?></td>
+        <td><?php  echo $name_db['last_name']; ?></td>
+        <td><?php echo $name_db['mail']; ?></td>
+        <?php
+         }
+          ?>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+        
     </body>
 </html>
 
@@ -27,29 +94,6 @@
 
 <?php
 
-$con = mysql_connect('localhost', 'root', '');
-    mysql_select_db('user', $con);
-
-
-    
-
-    $result5 = mysql_query("SELECT * FROM `users`");
-    echo  nl2br( "\n");
-    echo 'דאר אלקטרוני';
- 
- echo '     ';
- echo 'שם משפחה';
- echo '     ';
- echo 'שם פרטי';
-    while ($name_db = mysql_fetch_array($result5)) {
-echo  nl2br( "\n");
-echo $name_db['username'];
-echo '     ';
-echo $name_db['last_name'];
-echo '     ';
-echo $name_db['mail'];
-echo  nl2br( "\n");
-    }
 
 if (isset($_POST['Submit'])) {
 
@@ -94,6 +138,7 @@ if (isset($_POST['Submit'])) {
             $new_user=$username1;
                     mysql_query("UPDATE users SET username='$new_user' , password='$new_pass',mail='$new_email',last_name='$new_lastname' WHERE username='$username2' ;");
       echo 'user exist and edited';
+      header("Refresh:0");
             break;
         }
     }
@@ -109,3 +154,6 @@ if (isset($_POST['Submit'])) {
 }
 ?>
 
+<html>
+     <input class="button-exit"  type="button" onclick="location.href = 'manager.php'" value="חזרה" />
+</html>

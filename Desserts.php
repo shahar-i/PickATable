@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="menu.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        
     <p id="demo"></p>
 
 </head>
@@ -23,7 +24,7 @@
 
         <div class="back">
             
-           <a href="menu.php"><img src="back.png"></a> 
+           <a href="invitesion_user.php"><img src="back.png"></a> 
         </div>
     </div>
     <form name="form1" method="POST" action="Desserts.php">
@@ -32,6 +33,19 @@
 
 
 </html> 
+  <?php
+session_start();
+ ?>
+<html><span>שלום:</span></html>
+<?php
+ echo $_SESSION['sign_user'];//היוזר שהתחבר
+ $name_user=$_SESSION['sign_user'];//היוזר שהתחבר
+ echo nl2br ("\n");
+ echo 'שולחן מספר';
+ echo $_SESSION['number_table'];//מספר שולחן
+$num_table=$_SESSION['number_table'];
+?>
+
 
 <?php
 
@@ -77,7 +91,7 @@ foreach ($my_arr as $key => $value) {
         { 
         
         
-            $result2=mysql_query("INSERT INTO `user`.`invitation` (`name`, `price`) VALUES ('$named', '$price');");//מכניס לטבלת הזמנות מה שנבחר 
+            $result2=mysql_query("INSERT INTO `user`.`$num_table` (`name`, `price` , `name_user`) VALUES ('$named', '$price' , '$name_user');");//מכניס לטבלת הזמנות מה שנבחר 
             
             break;
              
@@ -92,7 +106,7 @@ foreach ($my_arr as $key => $value) {
 $con=mysql_connect('localhost','root','');
 mysql_select_db('user',$con);
 
-$result=mysql_query("SELECT * FROM invitation");
+$result=mysql_query("SELECT * FROM `$num_table`");
 if(mysql_num_rows($result)){
 ?>
 <html><h4> פרטי הזמנה למלצר</h4><html>
@@ -115,7 +129,8 @@ while ($res2 = mysql_fetch_array($result)) {// הדפסת טבלת הזמנה
         echo "שם פריט:",$res2["name"];
    print '<br />';
     echo "מחיר פריט:",$res2["price"];
-     
+      print '<br />';
+    echo "שם מלצר:",$res2["name_user"];
     
 print '<br />';print '<br />';
 }
@@ -124,6 +139,8 @@ print '<br />';print '<br />';
         <html>  <textarea class="text_hide" rows="4" cols="50" style="direction: rtl;" name="comments">
 <?php
  echo   $comant;//מדפיס לתוך הטקסט מטבלת הערות לאחר השמירת השמתנה
+ 
+ echo $_SESSION['comentt'];
  
 ?>
 </textarea> 
@@ -134,9 +151,9 @@ print '<br />';print '<br />';
         <?php
 }
 }
-$result=mysql_query("SELECT * FROM invitation");
+$result=mysql_query("SELECT * FROM `$num_table`");
 if(mysql_num_rows($result)){
-
+    
 $i=0;
 while ($res = mysql_fetch_array($result)) {
    $named2=$res["name"];
@@ -153,7 +170,7 @@ foreach ($my_arr as $key => $value) {
     if (isset($_POST[$named])==$value)//בדיקה אם מה שנבחר נמצא בטבלה וגם במערך הקינוחים
         { 
         
-           $result2=mysql_query("DELETE FROM `invitation` WHERE name='$named2' and price=$price LIMIT 1 ");//מכניס לטבלת הזמנות מה שנבחר 
+           $result2=mysql_query("DELETE FROM `$num_table` WHERE name='$named2' and price=$price LIMIT 1 ");//מכניס לטבלת הזמנות מה שנבחר 
         
         header("Refresh:0");
         $i=1;
@@ -175,15 +192,25 @@ if (isset($_POST["comments2"]))
 mysql_select_db('user',$con);
 $comments=$_POST['comments'];
 
-$result=mysql_query("UPDATE `comments` SET `comment`='$comments' WHERE 1;");
-?>
+$result=mysql_query("UPDATE `comments` SET `comment`='$comments'  WHERE  `num_table`='$num_table';");
+?>               
         <script>
             $('.text_hide').hide();
             </script>
             <html>  <textarea class="text_hide2" rows="4" cols="50" style="direction: rtl;" name="comments">
 <?php
+ $con=mysql_connect('localhost','root','');//מתחבר לבסיס נתונים על מנת להדפיס הערות לשדה הערות
+mysql_select_db('user',$con);
 
- echo   $_POST['comments'];
+$result1 = mysql_query("SELECT comment FROM `comments` WHERE `num_table`='$num_table';");
+
+$row = mysql_fetch_row($result1);
+$shaeRating = $row[0];
+
+
+
+ $_SESSION['comentt'] = $shaeRating;//שומר הערות 
+ echo $_SESSION['comentt'];
     
  
  

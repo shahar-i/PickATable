@@ -156,10 +156,13 @@
 
 <?php
 
-
+session_start();
 
 $username = $_POST['username'];
 $password = $_POST['password'];
+
+$_SESSION['sign_user'] = $username;//שומר את היוזר שהתחבר ומעביר להזמנות 
+
 
 $con = mysql_connect('localhost', 'root', '');
 mysql_select_db('user', $con);

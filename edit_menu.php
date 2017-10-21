@@ -40,5 +40,8 @@
 
 
         </html>
-        
+        <form name="form1" method="POST" action="edit_menu.php"> 
+ <?php
  
+ 
+ ?>

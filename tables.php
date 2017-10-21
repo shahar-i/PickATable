@@ -1,67 +1,45 @@
+ 
 <html>
     <head>
          <link rel="stylesheet" type="text/css" href="menu.css">
     </head>
     <body>
+        <form  action="tables.php" method="POST">
         <div >
+           
             <table class="center">
             <tr>
                 <td > 
-                    <button  onclick="location.href='menu.php'">1</button> &nbsp; &nbsp;&nbsp;&nbsp;
+                    <input type="submit"  value="1" name="table1" onclick=""></input> &nbsp; &nbsp;&nbsp;&nbsp;
                 </td>
                 <td>
-                    <button onclick="location.href='menu.php'">2</button> &nbsp; &nbsp;&nbsp;&nbsp;
+                    <input type="submit" value="2" name="table2" onclick="location.href='invitesion_user.php'"></input> &nbsp; &nbsp;&nbsp;&nbsp;
                 </td>
                   <td > 
-                    <button onclick="location.href='menu.php'">3</button> &nbsp; &nbsp;&nbsp;&nbsp;
+                    <input type="submit" value="3" name="table3" onclick="location.href='invitesion_user.php'"></input> &nbsp; &nbsp;&nbsp;&nbsp;
                 </td>
                 <td>
-                    <button onclick="location.href='menu.php'">4</button> &nbsp; &nbsp;&nbsp;&nbsp;
+                    <input type="submit" name="table4" value="4" onclick="location.href='invitesion_user.php'"></input> &nbsp; &nbsp;&nbsp;&nbsp;
                 </td>
             </tr>
-               <tr>
-                <td > 
-                    <button onclick="location.href='menu.php'">5</button>
-                </td>
-                <td>
-                    <button onclick="location.href='menu.php'">6</button>
-                </td>
-                  <td > 
-                    <button onclick="location.href='menu.php'">7</button>
-                </td>
-                <td>
-                    <button onclick="location.href='menu.php'">8</button>
-                </td>
-            </tr>
-               <tr>
-                <td > 
-                    <button onclick="location.href='menu.php'">9</button>
-                </td>
-                <td>
-                    <button onclick="location.href='menu.php'">10</button>
-                </td>
-                  <td > 
-                    <button onclick="location.href='menu.php'">11</button>
-                </td>
-                <td>
-                    <button onclick="location.href='menu.php'">12</button>
-                </td>
-            </tr>
-               <tr>
-                <td > 
-                    <button onclick="location.href='menu.php'">13</button>
-                </td>
-                <td>
-                    <button onclick="location.href='menu.php'">14</button>
-                </td>
-                  <td > 
-                    <button onclick="location.href='menu.php'">15</button>
-                </td>
-                <td>
-                    <button onclick="location.href='menu.php'">16</button>
-                </td>
+            
+           </form>
             </tr>
         </table>
+        </html>
+         <?php
+session_start();
+ 
+
+ echo $_SESSION['sign_user'];//שם מלצר שהתחבר 
+?>
+<html><span> :שלום</span></html>
+
+
+<html>
+            
+            </br> </br> </br> </br>
+             <a href="sign.in.php"><img src="back.png"></a> 
         </div>
     </body>
 </html>
@@ -69,33 +47,35 @@
 
 <?php
 
-//session_start();
-//if(!isset($_SESSION['username'])){
-//   header("Location:sign.in.php");
-//}
+if (isset($_POST['table1'])) {
+  
+    
+    $_SESSION['number_table'] = "1";//שומר את היוזר  המספר שולחן שנבחר 
+    header("Location: invitesion_user.php");
+    exit;
+}
 
-$con=mysql_connect('localhost','root','');
-mysql_select_db('user',$con);
+if (isset($_POST['table2'])) {
+  
+    
+    $_SESSION['number_table'] = "2";//שומר את היוזר  המספר שולחן שנבחר 
+    header("Location: invitesion_user.php");
+    exit;
+}
+if (isset($_POST['table3'])) {
+  
+    
+    $_SESSION['number_table'] = "3";//שומר את היוזר  המספר שולחן שנבחר 
+    header("Location: invitesion_user.php");
+    exit;
+}
+if (isset($_POST['table4'])) {
+  
+    
+    $_SESSION['number_table'] = "4";//שומר את היוזר  המספר שולחן שנבחר 
+    header("Location: invitesion_user.php");
+    exit;
+}
 
-$result=mysql_query("SELECT * FROM tables");
-
-
-if(mysql_num_rows($result))
-{
-  $my_arr = array();
-while ($res = mysql_fetch_array($result)) {
 
 ?>
-<html>
-    <center>  <input class="button-exit"  onclick="location.href='menu.php'" name="<?php echo $res["table_name"]; ?> " type="button"  value= "<?php echo $res["table_name"]; ?> "/> </br></center>
-
-</html>
-
-<?php
- 
-
-
-
-  
-}
-}
